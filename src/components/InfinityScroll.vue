@@ -1,10 +1,11 @@
 <template>
   <div class="user-list">
-    <h2>Users</h2>
-    <div class="user-card" v-for="user in users" :key="user.email">
-      <img :src="user.picture.medium" :alt="user.name.first" />
-      <h3>{{ user.name.first }} {{ user.name.last }}</h3>
-      <p>{{ user.email }}</p>
+    <div class="user-cards-wrapper">
+      <div class="user-card" v-for="user in users" :key="user.email">
+        <img :src="user.picture.medium" :alt="user.name.first" class="user-card__image" />
+        <h3>{{ user.name.first }} {{ user.name.last }}</h3>
+        <p>{{ user.email }}</p>
+      </div>
     </div>
     <div v-if="loading" class="loading">Loading...</div>
   </div>
@@ -46,22 +47,41 @@ onMounted(() => {
 <style scoped>
 .user-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 16px;
-  padding: 16px;
 }
+
+.user-cards-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 16px;
+  padding-top: 32px;
+}
+
 .user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 200px;
   text-align: center;
 }
+
 .loading {
   text-align: center;
   width: 100%;
-  margin-top: 20px;
+  padding: 20px;
+}
+
+.user-card__image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 16px;
 }
 </style>

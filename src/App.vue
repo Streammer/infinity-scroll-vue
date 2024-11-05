@@ -1,14 +1,17 @@
 <template>
-    <h1>Hello World</h1>
-    <InfinityScroll />
+    <Container>
+        <InfinityScroll />
+    </Container>
 </template>
 
 <script>
 import InfinityScroll from './components/InfinityScroll.vue';
+import Container from './components/Container.vue';
 export default {
     name: 'App',
     components: {
-        InfinityScroll
+        InfinityScroll,
+        Container
     }
 };
 </script>

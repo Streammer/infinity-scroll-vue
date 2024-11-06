@@ -19,11 +19,6 @@ const users = ref([]);
 const loading = ref(false);
 let page = 1;
 
-/**
- * Fetches a list of users from the Random User API and appends them to the existing list.
- * Increments the page number after a successful fetch. Handles loading state during the fetch process.
- * Logs an error message to the console if the fetch operation fails.
- */
 const fetchUsers = async () => {
   loading.value = true;
   try {

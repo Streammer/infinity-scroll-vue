@@ -1,0 +1,20 @@
+{
+    "source": {
+      "include": ["src"],
+      "includePattern": ".+\\.(js|vue)$",
+      "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": ["plugins/markdown"],
+    "opts": {
+      "destination": "./docs",
+      "recurse": true,
+      "readme": "README.md",
+      "template": "node_modules/docdash"
+    },
+    "babel": {
+      "extensions": ["js", "vue"],
+      "presets": ["@babel/preset-env"],
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    }
+  }
+  

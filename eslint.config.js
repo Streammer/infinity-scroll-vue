@@ -1,13 +1,19 @@
+import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
-export default [
+import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 
-  ...pluginVue.configs['flat/recommended'],
+export default [
   {
-    files: ["src/**/*.js"],
-    ignores: ["**/*.config.js"],
-    rules: {
-         semi: "error",
-        "prefer-const": "error"
-    }
-  }
+    name: 'app/files-to-lint',
+    files: ['**/*.{js,mjs,jsx,vue}'],
+  },
+
+  {
+    name: 'app/files-to-ignore',
+    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**', '**/docs/**'],
+  },
+
+  js.configs.recommended,
+  ...pluginVue.configs['flat/essential'],
+  skipFormatting,
 ]

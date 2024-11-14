@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import axios from 'axios';
 
 const users = ref([]);
@@ -42,6 +42,9 @@ onMounted(() => {
   fetchUsers();
   window.addEventListener('scroll', handleScroll);
 });
+
+onUnmounted(() => { window.removeEventListener('scroll', handleScroll); });
+
 </script>
 
 <style scoped>
